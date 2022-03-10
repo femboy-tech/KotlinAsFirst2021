@@ -2,18 +2,7 @@
 
 package lesson2.task2
 
-import femboy.chess.QueenPiece
-import femboy.utils.digitBy
-import femboy.utils.length
 import lesson1.task1.sqr
-import java.io.IOException
-import java.lang.Exception
-import java.lang.Integer.sum
-import java.lang.NullPointerException
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 /**
  * Пример
@@ -29,16 +18,7 @@ fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
  * Четырехзначное число назовем счастливым, если сумма первых двух ее цифр равна сумме двух последних.
  * Определить, счастливое ли заданное число, вернуть true, если это так.
  */
-fun isNumberHappy(number: Int): Boolean {
-    assert(number.length() == 4)
-
-    val num1 = number.digitBy(0)
-    val num2 = number.digitBy(1)
-    val num3 = number.digitBy(2)
-    val num4 = number.digitBy(3)
-
-    return num1 + num2 == num3 + num4;
-}
+fun isNumberHappy(number: Int): Boolean = TODO()
 
 /**
  * Простая (2 балла)
@@ -47,12 +27,8 @@ fun isNumberHappy(number: Int): Boolean {
  * Определить, угрожают ли они друг другу. Вернуть true, если угрожают.
  * Считать, что ферзи не могут загораживать друг друга.
  */
-fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean {
-    val queen1 = QueenPiece(x1, y1)
-    val queen2 = QueenPiece(x2, y2)
+fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
 
-    return queen1.canHit(queen2)
-}
 
 /**
  * Простая (2 балла)
@@ -60,13 +36,7 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean {
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
-fun daysInMonth(month: Int, year: Int): Int {
-    return when (month) {
-        2 -> if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) 29 else 28
-        1, 3, 5, 7, 8, 10, 12 -> 31
-        else -> 30
-    }
-}
+fun daysInMonth(month: Int, year: Int): Int = TODO()
 
 /**
  * Простая (2 балла)
@@ -89,9 +59,4 @@ fun circleInside(
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
-    val brickSortedSides = intArrayOf(a, b, c).sorted()
-    val holeSortedSides = intArrayOf(r, s).sorted()
-
-    return brickSortedSides[0] <= holeSortedSides[0] && brickSortedSides[1] <= holeSortedSides[1]
-}
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()

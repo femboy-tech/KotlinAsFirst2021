@@ -2,10 +2,6 @@
 
 package lesson5.task1
 
-import ru.spbstu.wheels.toMap
-import kotlin.math.max
-import kotlin.math.min
-
 // Урок 5: ассоциативные массивы и множества
 // Максимальное количество баллов = 14
 // Рекомендуемое количество баллов = 9
@@ -212,21 +208,7 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
  * Например:
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
-fun extractRepeats(list: List<String>): Map<String, Int> {
-    val wordsRepeatsMap = mutableMapOf<String, Int>();
-
-    for (item in list) {
-        val count = wordsRepeatsMap[item]
-
-        if (count != null) {
-            wordsRepeatsMap[item] = count + 1
-        } else {
-            wordsRepeatsMap[item] = 1
-        }
-    }
-
-    return wordsRepeatsMap.filter { it.value >= 2 }
-}
+fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
 
 /**
  * Средняя (3 балла)
@@ -295,22 +277,7 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  *   findSumOfTwo(listOf(1, 2, 3), 4) -> Pair(0, 2)
  *   findSumOfTwo(listOf(1, 2, 3), 6) -> Pair(-1, -1)
  */
-fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
-    val indexes = mutableMapOf<Int, Int>()
-
-    for ((num1Index, num1) in list.withIndex()) {
-        val num2 = number - num1
-        val num2Index = indexes[num1]
-
-        if (num2Index != null) {
-            return Pair(num2Index, num1Index)
-        }
-
-        if (num2 >= 0) indexes[num2] = num1Index
-    }
-
-    return Pair(-1, -1)
-}
+fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
 
 /**
  * Очень сложная (8 баллов)

@@ -3,7 +3,6 @@ package lesson4.task1
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
-import kotlin.system.measureTimeMillis
 
 class Tests {
     @Test
@@ -232,8 +231,6 @@ class Tests {
     @Test
     @Tag("7")
     fun russian() {
-        assertEquals("пятьсот пятьдесят пять тысяч восемьсот десять", russian(555810))
-        assertEquals("сто десять тысяч семьсот двадцать", russian(110720))
         assertEquals("триста семьдесят пять", russian(375))
         assertEquals("двадцать две тысячи девятьсот шестьдесят четыре", russian(22964))
         assertEquals("сто девятнадцать тысяч пятьсот восемь", russian(119508))

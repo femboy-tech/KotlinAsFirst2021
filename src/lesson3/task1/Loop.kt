@@ -2,9 +2,7 @@
 
 package lesson3.task1
 
-import femboy.utils.digitBy
-import femboy.utils.length
-import kotlin.math.*
+import kotlin.math.sqrt
 
 // Урок 3: циклы
 // Максимальное количество баллов = 9
@@ -74,7 +72,7 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = n.length()
+fun digitNumber(n: Int): Int = TODO()
 
 /**
  * Простая (2 балла)
@@ -82,48 +80,21 @@ fun digitNumber(n: Int): Int = n.length()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int {
-    var pre = 0
-    var current = 1
-
-    for (i in 2..n) {
-        val next = pre + current
-        pre = current
-        current = next
-    }
-
-    return current
-}
+fun fib(n: Int): Int = TODO()
 
 /**
  * Простая (2 балла)
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int {
-    var count = 2
-
-    while (n % count != 0) {
-        count++
-    }
-
-    return count
-}
+fun minDivisor(n: Int): Int = TODO()
 
 /**
  * Простая (2 балла)
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int {
-    var count = n - 1
-
-    while (n % count != 0 && count > 1) {
-        count--
-    }
-
-    return count
-}
+fun maxDivisor(n: Int): Int = TODO()
 
 /**
  * Простая (2 балла)
@@ -221,24 +192,7 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int {
-    var length = 0
-    var index = 1
-
-    while (true) {
-        val num = index * index
-        val len = num.length()
-
-        if (length + len >= n) {
-            val pos = n - length
-
-            return num.digitBy(pos - 1)
-        }
-
-        length += len
-        index++
-    }
-}
+fun squareSequenceDigit(n: Int): Int = TODO()
 
 /**
  * Сложная (5 баллов)
@@ -249,21 +203,4 @@ fun squareSequenceDigit(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int {
-    var length = 0
-    var index = 1
-
-    while (true) {
-        val fb = fib(index)
-        val fbLength = fb.length()
-
-        if (length + fbLength >= n) {
-            val pos = n - length
-
-            return fb.digitBy(pos - 1)
-        }
-
-        length += fbLength
-        index++
-    }
-}
+fun fibSequenceDigit(n: Int): Int = TODO()

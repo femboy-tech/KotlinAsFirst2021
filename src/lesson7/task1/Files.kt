@@ -2,9 +2,6 @@
 
 package lesson7.task1
 
-import melon.transformers.Html2StringTransformer
-import melon.transformers.Markdown2HtmlTransformer
-import melon.transformers.String2MarkdownTransformer
 import java.io.File
 
 // Урок 7: работа с файлами
@@ -285,15 +282,7 @@ Suspendisse ~~et elit in enim tempus iaculis~~.
  * (Отступы и переносы строк в примере добавлены для наглядности, при решении задачи их реализовывать не обязательно)
  */
 fun markdownToHtmlSimple(inputName: String, outputName: String) {
-    val inText = File(inputName).readText()
-
-    val rootMarkdownNode = String2MarkdownTransformer().transform(inText)
-
-    val rootHtmlNode = Markdown2HtmlTransformer().transform(rootMarkdownNode)
-
-    val outText = Html2StringTransformer().transform(rootHtmlNode)
-
-    File(outputName).writeText(outText)
+    TODO()
 }
 
 /**
@@ -354,7 +343,8 @@ fun markdownToHtmlSimple(inputName: String, outputName: String) {
   <body>
     <p>
       <ul>
-        <li>Утка по-пекински
+        <li>
+          Утка по-пекински
           <ul>
             <li>Утка</li>
             <li>Соус</li>
@@ -393,15 +383,7 @@ fun markdownToHtmlSimple(inputName: String, outputName: String) {
  * (Отступы и переносы строк в примере добавлены для наглядности, при решении задачи их реализовывать не обязательно)
  */
 fun markdownToHtmlLists(inputName: String, outputName: String) {
-    val inText = File(inputName).readText()
-
-    val rootMarkdownNode = String2MarkdownTransformer().transform(inText)
-
-    val rootHtmlNode = Markdown2HtmlTransformer().transform(rootMarkdownNode)
-
-    val outText = Html2StringTransformer().transform(rootHtmlNode)
-
-    File(outputName).writeText(outText)
+    TODO()
 }
 
 /**
@@ -413,48 +395,7 @@ fun markdownToHtmlLists(inputName: String, outputName: String) {
  *
  */
 fun markdownToHtml(inputName: String, outputName: String) {
-    /// Идея
-    /// ---
-    /// Есть например файл:
-    /// City: **New York *(NY)***
-    /// Phone: **+79952320025**
-    /// ---
-    /// Дальше текст данного файла идет в лексер
-    /// и создается следующая таблица из токенов:
-    /// Text: City:
-    /// Tag: **
-    /// Text: New York
-    /// Tag: *
-    /// Text: (NY)
-    /// Tag: *
-    /// Tag: **
-    /// Newline:
-    /// Text: Phone:
-    /// Tag: **
-    /// Text: +79952320025
-    /// Tag: **
-    /// ---
-    /// Дальше строится дерево из нод, из таблицы токенов:
-    /// Branch
-    /// - Branch
-    ///   - Text -> City:
-    ///   - Tag -> **
-    ///     - Text -> New York
-    ///     - Tag -> *
-    ///       - Text -> (NY)
-    /// ...
-    /// ---
-    /// из данного дерево нод можно сгенерировать обратно markdown string или преобразовать его например в html
-
-    val inText = File(inputName).readText()
-
-    val rootMarkdownNode = String2MarkdownTransformer().transform(inText)
-
-    val rootHtmlNode = Markdown2HtmlTransformer().transform(rootMarkdownNode)
-
-    val outText = Html2StringTransformer().transform(rootHtmlNode)
-
-    File(outputName).writeText(outText)
+    TODO()
 }
 
 /**

@@ -76,17 +76,6 @@ fun main() {
  */
 fun dateStrToDigit(str: String): String = TODO()
 
-
-val monthsStr = listOf<String>(
-    "",
-    "",
-    "",
-    "Апрель",
-    "Январь"
-)
-
-val dateRegex = """^(\d{1,2})[.](\d{1,2})[.](\d{1,2})$""".toRegex()
-
 /**
  * Средняя (4 балла)
  *

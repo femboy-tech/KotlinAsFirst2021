@@ -2,8 +2,6 @@
 
 package lesson4.task1
 
-import femboy.utils.digitBy
-import femboy.utils.length
 import lesson1.task1.discriminant
 import kotlin.math.sqrt
 
@@ -235,36 +233,6 @@ fun decimal(digits: List<Int>, base: Int): Int = TODO()
  */
 fun decimalFromString(str: String, base: Int): Int = TODO()
 
-fun arabicToRomanWithPattern(
-    number: Int,
-    str: String,
-    fourStr: String,
-    fiveStr: String,
-    nineStr: String
-): String {
-    var buffer = ""
-    var digit = number
-
-    if (digit !in 1..9) return buffer
-
-    when (digit) {
-        4 -> buffer += fourStr
-        9 -> buffer += nineStr
-        else -> {
-            if (digit >= 5) {
-                digit -= 5
-                buffer += fiveStr
-            }
-
-            for (i in 1..digit) {
-                buffer += str
-            }
-        }
-    }
-
-    return buffer
-}
-
 /**
  * Сложная (5 баллов)
  *
@@ -273,162 +241,7 @@ fun arabicToRomanWithPattern(
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(number: Int): String {
-    return arabicToRomanWithPattern(number.digitBy(-4), "M", "M", "M", "M") +
-            arabicToRomanWithPattern(number.digitBy(-3), "C", "CD", "D", "CM") +
-            arabicToRomanWithPattern(number.digitBy(-2), "X", "XL", "L", "XC") +
-            arabicToRomanWithPattern(number.digitBy(-1), "I", "IV", "V", "IX")
-}
-
-class NumberWords(
-    val w1: String?,
-    val w5: String?,
-    val w10: String?,
-    val w100: String?,
-    val w1000: String?
-) {
-    fun byPosition(position: Int): String? {
-        return when (position) {
-            1 -> w1
-            2 -> w10
-            3 -> w100
-            4 -> w1000
-            else -> null
-        }
-    }
-}
-
-class NumbersWords(
-    val num1: NumberWords,
-    val num2: NumberWords,
-    val num3: NumberWords,
-    val num4: NumberWords,
-    val num5: NumberWords,
-    val num6: NumberWords,
-    val num7: NumberWords,
-    val num8: NumberWords,
-    val num9: NumberWords
-) {
-    fun byNumber(number: Int): NumberWords? {
-        return when (number) {
-            1 -> num1
-            2 -> num2
-            3 -> num3
-            4 -> num4
-            5 -> num5
-            6 -> num6
-            7 -> num7
-            8 -> num8
-            9 -> num9
-            else -> null
-        }
-    }
-}
-
-fun addIfNotNull(buffer: MutableList<String>, value: String?) {
-    if (value != null) {
-        buffer.add(0, value)
-    }
-}
-
-private val numbersWords = NumbersWords(
-    NumberWords(
-        "один",
-        "одиннадцать",
-        "десять",
-        "сто",
-        "одна"
-    ),
-    NumberWords(
-        "два",
-        "двенадцать",
-        "двадцать",
-        "двести",
-        "две"
-    ),
-    NumberWords(
-        "три",
-        "тринадцать",
-        "тридцать",
-        "триста",
-        null
-    ),
-    NumberWords(
-        "четыре",
-        "четырнадцать",
-        "сорок",
-        "четыреста",
-        null
-    ),
-    NumberWords(
-        "пять",
-        "пятнадцать",
-        "пятьдесят",
-        "пятьсот",
-        null
-    ),
-    NumberWords(
-        "шесть",
-        "шестнадцать",
-        "шестьдесят",
-        "шестьсот",
-        null
-    ),
-    NumberWords(
-        "семь",
-        "семнадцать",
-        "семьдесят",
-        "семьсот",
-        null
-    ),
-    NumberWords(
-        "восемь",
-        "восемнадцать",
-        "восемьдесят",
-        "восемьсот",
-        null
-    ),
-    NumberWords(
-        "девять",
-        "девятнадцать",
-        "девяносто",
-        "девятьсот",
-        null
-    )
-)
-
-fun addW1Digit(buffer: MutableList<String>, digit: Int, digitNext: Int) {
-    if (digitNext != 1) addIfNotNull(buffer, numbersWords.byNumber(digit)?.w1)
-}
-
-fun addW10Digit(buffer: MutableList<String>, digit: Int, digitPre: Int) {
-    if (digit == 1 && digitPre != 0) {
-        addIfNotNull(buffer, numbersWords.byNumber(digitPre)?.w5)
-    } else {
-        addIfNotNull(buffer, numbersWords.byNumber(digit)?.w10)
-    }
-}
-
-fun addW100Digit(buffer: MutableList<String>, digit: Int) {
-    addIfNotNull(buffer, numbersWords.byNumber(digit)?.w100)
-}
-
-fun addW1000Digit(buffer: MutableList<String>, digit: Int, digitNext: Int) {
-    if (digitNext == 1) return addIfNotNull(buffer, "тысяч")
-    else {
-        when (digit) {
-            1 -> addIfNotNull(buffer, "тысяча")
-            in 1..4 -> addIfNotNull(buffer, "тысячи")
-            else -> addIfNotNull(buffer, "тысяч")
-        }
-
-        var w1Num = numbersWords.byNumber(digit)?.w1000
-
-        if (w1Num == null) w1Num = numbersWords.byNumber(digit)?.w1
-
-        addIfNotNull(buffer, w1Num)
-    }
-}
+fun roman(n: Int): String = TODO()
 
 /**
  * Очень сложная (7 баллов)
@@ -437,16 +250,4 @@ fun addW1000Digit(buffer: MutableList<String>, digit: Int, digitNext: Int) {
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(number: Int): String {
-    val buffer = arrayListOf<String>()
-    val length = number.length()
-
-    addW1Digit(buffer, number.digitBy(-1), number.digitBy(-2))
-    if (length >= 2) addW10Digit(buffer, number.digitBy(-2), number.digitBy(-1))
-    if (length >= 3) addW100Digit(buffer, number.digitBy(-3))
-    if (length >= 4) addW1000Digit(buffer, number.digitBy(-4), number.digitBy(-5))
-    if (length >= 5) addW10Digit(buffer, number.digitBy(-5), number.digitBy(-4))
-    if (length >= 6) addW100Digit(buffer, number.digitBy(-6))
-
-    return buffer.joinToString(" ")
-}
+fun russian(n: Int): String = TODO()

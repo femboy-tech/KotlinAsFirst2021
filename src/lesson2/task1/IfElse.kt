@@ -2,15 +2,9 @@
 
 package lesson2.task1
 
-import femboy.chess.BishopPiece
-import femboy.chess.KingPiece
-import femboy.chess.RookPiece
-import femboy.utils.*
 import lesson1.task1.discriminant
-import java.awt.Point
-import java.lang.Exception
-import java.rmi.server.ExportException
-import kotlin.math.*
+import kotlin.math.max
+import kotlin.math.sqrt
 
 // Урок 2: ветвления (здесь), логический тип (см. 2.2).
 // Максимальное количество баллов = 6
@@ -74,26 +68,7 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String {
-    assert(age in 0..200)
-
-    val lastNum = age.digitBy(-1)
-    val preLastNum = if (age.length() > 1) age.digitBy(-2) else null
-
-    return when {
-        preLastNum == 1 -> "$age лет"
-        lastNum == 1 -> "$age год"
-        lastNum in 2..4 -> "$age года"
-        else -> "$age лет"
-    }
-}
-
-class Line(val time: Double, val range: Double) {
-    init {
-        assert(time >= 0)
-        assert(range >= 0)
-    }
-}
+fun ageDescription(age: Int): String = TODO()
 
 /**
  * Простая (2 балла)
@@ -106,32 +81,7 @@ fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double {
-    val lines = listOf(
-        Line(t1, v1 * t1),
-        Line(t2, v2 * t2),
-        Line(t3, v3 * t3)
-    )
-
-    val maxRange = lines.sumOf { it.range }
-    val maxDiv2Range = maxRange / 2
-
-    var totalTime = 0.0
-    var totalRange = 0.0
-
-    for (line in lines) {
-        if (totalRange + line.range > maxDiv2Range) {
-            totalTime += line.time * ((line.range - ((totalRange + line.range) - maxDiv2Range)) / line.range)
-
-            break
-        } else {
-            totalTime += line.time
-            totalRange += line.range
-        }
-    }
-
-    return totalTime
-}
+): Double = TODO()
 
 /**
  * Простая (2 балла)
@@ -146,22 +96,7 @@ fun whichRookThreatens(
     kingX: Int, kingY: Int,
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
-): Int {
-    val king = KingPiece(kingX, kingY)
-
-    val rook1 = RookPiece(rookX1, rookY1)
-    val rook2 = RookPiece(rookX2, rookY2)
-
-    val canRook1HitKing = rook1.canHit(king)
-    val canRook2HitKing = rook2.canHit(king)
-
-    return when {
-        canRook1HitKing && canRook2HitKing -> 3
-        canRook1HitKing -> 1
-        canRook2HitKing -> 2
-        else -> 0
-    }
-}
+): Int = TODO()
 
 /**
  * Простая (2 балла)
@@ -177,25 +112,7 @@ fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int {
-    val king = KingPiece(kingX, kingY)
-
-    val rook = RookPiece(rookX, rookY)
-    val bishop = BishopPiece(bishopX, bishopY)
-
-    val canRookHitKing = rook.canHit(king)
-    val canBishopHitKing = bishop.canHit(king)
-
-    return when {
-        canRookHitKing && canBishopHitKing -> 3
-        canRookHitKing -> 1
-        canBishopHitKing -> 2
-        else -> 0
-    }
-}
-
-fun getAngleDegreeFromTriangleSides(a: Double, b: Double, c: Double): Int =
-    Math.toDegrees(acos((a.pow(2) + b.pow(2) - c.pow(2)) / (2 * a * b))).toInt()
+): Int = TODO()
 
 /**
  * Простая (2 балла)
@@ -215,15 +132,4 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
-    val leftA = if (a > c) c else a
-    val leftB = if (a > c) d else b
-    val rightA = if (a > c) a else c
-    val rightB = if (a > c) b else d
-
-    return when {
-        leftB > rightB -> rightB - rightA
-        leftB - rightA >= 0 -> leftB - rightA
-        else -> -1
-    }
-}
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
